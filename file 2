@@ -1,0 +1,182 @@
+<html>	
+<head>
+    <title></title>
+	<link rel="stylesheet" type="text/css" href="mystyle.css"/>
+	<script>
+    function about (){
+		    document.getElementById("about").style.display = "block";
+		    document.getElementById("section").style.display = "none";
+		    document.getElementById("button4").style.background = "white";
+		    document.getElementById("button4").style.color = "black";
+            document.getElementById("button1").style.background = "black";
+		    document.getElementById("button1").style.color = "white";
+		    document.getElementById("button2").style.background = "black";
+		    document.getElementById("button2").style.color = "white";
+		    document.getElementById("button3").style.background = "black";
+		    document.getElementById("button3").style.color = "white";
+		}
+		function showChart() {
+		    var arr = [];
+		    document.getElementById("section").style.display = "block";
+			document.getElementById("about").style.display = "none";
+			document.getElementById("button1").style.background = "white";
+			document.getElementById("button1").style.color = "black";
+            document.getElementById("button2").style.background = "black";
+			document.getElementById("button2").style.color = "white";
+			document.getElementById("button3").style.background = "black";
+			document.getElementById("button3").style.color = "white";
+			document.getElementById("button4").style.background = "black";
+			document.getElementById("button4").style.color = "white";
+            var x = document.getElementById("mytable").rows.length;
+            document.getElementById("end").style.height = (x * 50) + 50 + "px";
+            document.getElementById("mytable").style.width = (document.getElementById("end").offsetWidth - 25) + "px";
+            document.getElementById("mytable").style.columnWidth = ((document.getElementById("end").offsetWidth - 25) / 4) + "px";
+            document.getElementById("middle").style.height = 800+"px";
+            var ca = document.getElementById("draw");
+            var ctx = ca.getContext("2d");
+            ctx.font = "25px Times New Roman";
+            ctx.fillText("Usage Per Day", 20, 20);
+            ctx.font = "15px Times New Roman";
+            ctx.fillText("60 minutes", 20, 80);
+            ctx.moveTo(90, 75);
+            ctx.lineTo(1000, 75);
+            ctx.stroke();
+            ctx.fillText("50 minutes", 20, 180);
+            ctx.moveTo(90, 175);
+            ctx.lineTo(1000, 175);
+            ctx.stroke();
+            ctx.fillText("40 minutes", 20, 280);
+            ctx.moveTo(90, 275);
+            ctx.lineTo(1000, 275);
+            ctx.stroke();
+            ctx.fillText("30 minutes", 20, 380);
+            ctx.moveTo(90, 375);
+            ctx.lineTo(1000, 375);
+            ctx.stroke();
+            ctx.fillText("20 minutes", 20, 480);
+            ctx.moveTo(90, 475);
+            ctx.lineTo(1000, 475);
+            ctx.stroke();
+            ctx.fillText("10 minutes", 20, 580);
+            ctx.moveTo(90, 575);
+            ctx.lineTo(1000, 575);
+            ctx.stroke();
+            ctx.fillText("0 minutes", 20, 680);
+            ctx.moveTo(90, 675);
+            ctx.lineTo(1000, 675);
+            ctx.stroke();
+            var j = 0;
+            for(var i=1;i<x;i++)
+            {
+                var t = document.getElementById("mytable").rows[i].cells[3].innerHTML.split(" ");
+                arr[j] = t[0];
+                j = j + 1;
+            }
+            for(var k=0;k<6;k++)
+            {
+                alert(arr[k]);
+            }
+        }
+		function showProducts() {
+		}
+		function set() {
+		    document.getElementById("button3").style.background = "white";
+		    document.getElementById("button3").style.color = "black";
+            document.getElementById("button2").style.background = "black";
+		    document.getElementById("button2").style.color = "white";
+		    document.getElementById("button1").style.background = "black";
+		    document.getElementById("button1").style.color = "white";
+		    document.getElementById("button4").style.background = "black";
+		    document.getElementById("button4").style.color = "white";
+		}
+		function setSize(){
+		    var x = document.getElementById("mytable").rows.length;
+		    var y= (x*50)+1400;
+		    document.getElementById("navbar").style.height = y + "px";
+		}
+	</script>
+</head>
+	<body onload="setSize();">
+		
+		<div id="header">
+			Welcome to OrthoPlus tracking chart
+		</div>
+		<div id="navbar">
+			<ul>
+  				<li><input id="button1" class="bt" type="button" value="Chart" onclick="showChart();" /></li>
+  				<li><input id="button2" class="bt" type="button" value="Products" onclick="showProducts();"  /></li>
+  				<li><input id="button3" class="bt" type="button" value="Print Report" onclick="window.print(); set();" /></li>
+  				<li><input id="button4" class="bt" type="button" value="About" onclick="about();" /></li>
+			</ul>
+		</div>
+		<div id="section" style="display:none;">
+			<div id="start">
+				<div id="c1" class="dv">
+                    Starting Date<br /><br /><br /><br /><br /><br />
+                    Starting data
+                    </div>
+                <div id="c2" class="dv">
+                    Licensce Expiry
+                </div>
+                <div id="c3" class="dv">
+                    Device Id
+                </div>
+                <div id="c4" class="dv">
+                    Days Not Used
+                </div>
+			</div>
+			<div id="middle" >
+				<canvas id="draw" width="1068" height="800"></canvas>
+			</div>
+			<div id="end">
+				<table id="mytable" cellspacing="0">
+                    <tr >
+                        <th>Date</th>
+                        <th>Started Usage At</th>
+                        <th>Ended USage At </th>
+                        <th>Usage Duration</th>
+                     </tr>
+                    <tr >
+                        <td>21-02-2000</td>
+                        <td>4:00</td>
+                        <td>4:42 </td>
+                        <td>42 minutes </td>
+                    </tr>
+                    <tr >
+                        <td>12-09-2010</td>
+                        <td>5:00</td>
+                        <td>5:12 </td>
+                        <td>12 minutes</td>
+                    </tr>
+                    <tr >
+                        <td>27-01-2015</td>
+                        <td>6:38</td>
+                        <td>7:00 </td>
+                        <td>22 minutes</td>
+                    </tr>
+                    <tr >
+                        <td>19-05-1997</td>
+                        <td>9:00</td>
+                        <td>9:18</td>
+                        <td>18 minutes</td>
+                    </tr>
+                    <tr >
+                        <td>24-11-2015</td>
+                        <td>10:00</td>
+                        <td>10:05</td>
+                        <td>5 minutes</td>
+                    </tr>
+                    <tr>
+                        <td class="aa">04-10-2015</td>
+                        <td class="aa">10:35</td>
+                        <td class="aa">11:00</td>
+                        <td class="aa">25 minutes</td>
+                    </tr>
+                </table>
+			</div>
+		</div>	
+		<div id="about" style="display:none;">
+			badcc
+		</div>	
+    </body>
+</html>
