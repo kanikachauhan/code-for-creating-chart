@@ -34,9 +34,12 @@
             document.getElementById("middle").style.height = 800+"px";
             var ca = document.getElementById("draw");
             var ctx = ca.getContext("2d");
-            ctx.font = "25px Times New Roman";
+            ctx.strokeStyle = "#006666";
+            ctx.fillStyle = "#CC6666";
+            ctx.font = "bold 25px Times New Roman";
             ctx.fillText("Usage Per Day", 20, 20);
             ctx.font = "15px Times New Roman";
+            ctx.fillStyle = "#660099";
             ctx.fillText("60 minutes", 20, 80);
             ctx.moveTo(90, 75);
             ctx.lineTo(1000, 75);
@@ -65,16 +68,79 @@
             ctx.moveTo(90, 675);
             ctx.lineTo(1000, 675);
             ctx.stroke();
+            var days = [];
+            var dates = [];
             var j = 0;
             for(var i=1;i<x;i++)
             {
                 var t = document.getElementById("mytable").rows[i].cells[3].innerHTML.split(" ");
+                var t1 = document.getElementById("mytable").rows[i].cells[0].innerHTML;
+                dates[j] = t1;
+                var t2 = new Date(t1);
+                days[j] = t2;
                 arr[j] = t[0];
                 j = j + 1;
+               
             }
+            var tt = 240;
+            ctx.beginPath();
+            var i = 0; var arr1 = [];
+            var arr2 = [];
             for(var k=0;k<6;k++)
             {
-                alert(arr[k]);
+                
+                var t = arr[k];
+                var y = 0;
+                if (t >= 0 && t <= 10)
+                {
+                    y = 675 - (t * 10);
+                }
+                else if (t > 10 && t <= 20)
+                {
+                    y = 675 - (t * 10);
+                }
+                else if (t > 20 && t <= 30)
+                {
+                    y = 675 - (t * 10);
+                }
+                else if (t > 30 && t <= 40)
+                {
+                    y = 675 - (t*10);
+                }
+                else if (t > 40 && t <= 50)
+                {
+                    y = 675 - (t * 10);
+                }
+                else if (t > 50 && t <= 60)
+                {
+                    y = 675 - (t * 10);
+                } arr1[i] = tt;
+                arr2[i] = y;
+                ctx.arc(tt, y, 3.5, 0, 2 * Math.PI);
+                ctx.fillStyle = "#CC0099";
+                ctx.fill();
+                ctx.closePath();
+                ctx.stroke();
+                ctx.beginPath();
+                tt = tt + 150;
+                i++;
+            } ctx.beginPath();
+            for(var st=0;st<6;st++)
+            {
+                if (st != 5)
+                {
+                    ctx.strokeStyle = "#CC0099";
+                    ctx.moveTo(arr1[st], arr2[st]);
+                    ctx.lineTo(arr1[st + 1], arr2[st + 1]);
+                    ctx.stroke();
+                }
+            } var tt1 = 200;
+            for(var tt=0;tt<6;tt++)
+            {
+                ctx.font = "bold 15px Times New Roman";
+                ctx.fillStyle = "#CC6666";
+                ctx.fillText(dates[tt], tt1, 700);
+                tt1 = tt1 + 150;
             }
         }
 		function showProducts() {
@@ -112,7 +178,8 @@
 		<div id="section" style="display:none;">
 			<div id="start">
 				<div id="c1" class="dv">
-                    Starting Date<br /><br /><br /><br /><br /><br />
+                    Starting Date<br /><br /><br />
+                    <div id="txt">21-02-2000</div><br /><br />
                     Starting data
                     </div>
                 <div id="c2" class="dv">
@@ -140,7 +207,7 @@
                         <td>21-02-2000</td>
                         <td>4:00</td>
                         <td>4:42 </td>
-                        <td>42 minutes </td>
+                        <td>8 minutes </td>
                     </tr>
                     <tr >
                         <td>12-09-2010</td>
@@ -158,19 +225,19 @@
                         <td>19-05-1997</td>
                         <td>9:00</td>
                         <td>9:18</td>
-                        <td>18 minutes</td>
+                        <td>34 minutes</td>
                     </tr>
                     <tr >
                         <td>24-11-2015</td>
                         <td>10:00</td>
                         <td>10:05</td>
-                        <td>5 minutes</td>
+                        <td>42 minutes</td>
                     </tr>
                     <tr>
-                        <td class="aa">04-10-2015</td>
-                        <td class="aa">10:35</td>
-                        <td class="aa">11:00</td>
-                        <td class="aa">25 minutes</td>
+                        <td >04-10-2015</td>
+                        <td >10:35</td>
+                        <td >11:00</td>
+                        <td >57 minutes</td>
                     </tr>
                 </table>
 			</div>
