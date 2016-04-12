@@ -1,0 +1,79 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package javaapplication3;
+
+/**
+ *
+ * @author kanika_chauhan
+ */
+class node{
+    int data;
+    node next;
+    node(int data){
+        this.data=data;
+    }
+}
+public class JavaApplication3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    static int var=10;
+    static node start=null;
+    static void reverse(node n){
+        node first=null,rest=null;
+        
+        if(start==null)
+            return;
+        first=start;
+        rest=start.next;
+        if(rest==null)
+            return;
+        reverse(rest);
+        first.next.next=first;
+        first.next=null;
+        start=rest;
+              
+    }
+    public static void main(String[] args) {
+        // TODO code application logic here
+        start=new node(var);
+        node n = start;
+        node fast=null;
+        node slow=null;
+        for(int i=2;i<10;i++)
+            n=n.next=new node(var*i);
+        node t=start;
+        fast=start;
+        slow=start;
+        while(true)
+        { 
+            if(fast.next==null){
+                System.out.println(slow.data);
+                break;
+            }
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+       /* node prev=null,current=start,next=null;
+        while(current!=null){
+           next= current.next;
+           current.next=prev;
+           prev=current;
+           current=next;
+        }
+        start=prev;
+               */
+        reverse(start);
+        node nt=start;
+        while(nt!=null)
+        {
+         System.out.println(nt.data);
+         nt=nt.next;
+        }
+    } 
+}
