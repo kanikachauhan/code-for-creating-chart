@@ -5,7 +5,24 @@
  */
 
 package javaapplication3;
-
+Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		String arr[] = str.split(" ");
+		BitSet b1 = new BitSet(Integer.parseInt(arr[0]));
+		BitSet b2 = new BitSet(Integer.parseInt(arr[0]));
+		int nval = Integer.parseInt(arr[1]);
+		String operations[] = new String[nval];
+		for(int i=0;i<nval;i++){
+			operations[i] = sc.nextLine();
+		}
+		for(int i=0;i<operations.length;i++){
+			String opr = operations[i];
+			String vals[] = opr.split(" ");
+			if(vals[0].equals("AND")){
+			}else if(){
+			}else if(){
+			}
+		}
 /**
  *
  * @author kanika_chauhan
